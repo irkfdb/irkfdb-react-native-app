@@ -4,9 +4,12 @@
 import React, {Component} from 'react';
 import {
     View,
-    Text,
-    Button
+    Text
 } from 'react-native';
+import {
+    Button
+} from 'react-native-elements';
+import Spinner from 'react-native-loading-spinner-overlay';
 import {connect} from 'react-redux';
 import IrkfdbCard from './IrkfdbCard';
 import getRandomFact from './../actions/FetchFacts';
@@ -28,7 +31,11 @@ class IrkfdbBody extends Component {
         if (factR.isFetching) {
             return (
                 <View style={Styles.bodyContainer}>
-                    <Text>loading...</Text>
+                    <Spinner
+                        visible={factR.isFetching}
+                        textContent="loading..."
+                        animation="fade"
+                    />
                 </View>
             );
         }
@@ -46,9 +53,11 @@ class IrkfdbBody extends Component {
                         fact={factR.data}
                     />
                     <Button
+                        raised
                         onPress={this.props.getRandomFact}
-                        title="Random Fact"
-                        color="#bf360c"
+                        icon={{name: 'cached'}}
+                        title='Random Fact'
+                        buttonStyle={Styles.button}
                         accessibilityLabel="Will get you a new fact"
                     />
                 </View>

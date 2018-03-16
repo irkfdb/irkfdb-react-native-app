@@ -6,15 +6,17 @@ import {
     View,
     Text
 } from 'react-native';
+import {
+    Header
+} from 'react-native-elements';
 import Styles from './../styles/Styles';
 
 const IrkfdbHeader = () => {
     return (
-        <View style={Styles.headerContainer}>
-            <Text style={Styles.headerText}>
-                IRKFDB APP
-            </Text>
-        </View>
+        <Header
+            centerComponent={{ text: 'IRKFDB APP' }}
+            backgroundColor='#bf360c'
+        />
     );
 };
 
